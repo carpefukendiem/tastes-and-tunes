@@ -155,14 +155,16 @@ export function ExperienceSection() {
             title="EXPERIENCE IT ALL"
             titleClassName="text-paper"
             srOnlyText="Experience It All"
+            squiggle="flanking"
           />
         </Reveal>
-        <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-9 md:grid-cols-3 xl:grid-cols-6">
+        <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-9 md:grid-cols-3 lg:grid-cols-6">
           {items.map((item) => (
             <Reveal key={item.label} className="flex justify-center">
               <IconBadge
                 asset={item.asset}
-                label={`${item.number ? `${item.number} / ` : ""}${item.label}`}
+                number={item.number}
+                label={item.label}
               />
             </Reveal>
           ))}

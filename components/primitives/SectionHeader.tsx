@@ -8,6 +8,7 @@ type SectionHeaderProps = HTMLAttributes<HTMLDivElement> & {
   titleClassName?: string;
   accentClassName?: string;
   srOnlyText?: string;
+  squiggle?: "underline" | "flanking";
 };
 
 export function SectionHeader({
@@ -18,6 +19,7 @@ export function SectionHeader({
   titleClassName = "",
   accentClassName = "",
   srOnlyText,
+  squiggle = "underline",
   className = "",
   ...props
 }: SectionHeaderProps) {
@@ -35,11 +37,23 @@ export function SectionHeader({
         </p>
       ) : null}
       <div aria-hidden={srOnlyText ? true : undefined}>
-        <h2
-          className={`mt-2 font-poster text-display leading-[0.95] tracking-[-0.02em] ${titleClassName}`}
-        >
-          {title}
-        </h2>
+        {squiggle === "flanking" ? (
+          <div className="flex items-center justify-center gap-4">
+            <Squiggle className="hidden h-4 w-24 text-gold sm:block" />
+            <h2
+              className={`mt-2 font-poster text-display leading-[0.95] tracking-[-0.02em] ${titleClassName}`}
+            >
+              {title}
+            </h2>
+            <Squiggle className="hidden h-4 w-24 scale-x-[-1] text-gold sm:block" />
+          </div>
+        ) : (
+          <h2
+            className={`mt-2 font-poster text-display leading-[0.95] tracking-[-0.02em] ${titleClassName}`}
+          >
+            {title}
+          </h2>
+        )}
         {accent ? (
           <p
             className={`mt-1 font-script text-script leading-tight ${accentClassName}`}
@@ -48,19 +62,29 @@ export function SectionHeader({
           </p>
         ) : null}
       </div>
-      <svg
-        aria-hidden="true"
-        className={`${centered ? "mx-auto" : ""} mt-4 h-4 w-40 text-gold`}
-        viewBox="0 0 180 20"
-        fill="none"
-      >
-        <path
-          d="M2 10 C18 2 28 18 45 10 S72 2 90 10 S119 18 136 10 S162 2 178 10"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeWidth="4"
+      {squiggle === "underline" ? (
+        <Squiggle
+          className={`${centered ? "mx-auto" : ""} mt-4 h-4 w-40 text-gold`}
         />
-      </svg>
+      ) : null}
     </div>
+  );
+}
+
+function Squiggle({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      viewBox="0 0 180 20"
+      fill="none"
+    >
+      <path
+        d="M2 10 C18 2 28 18 45 10 S72 2 90 10 S119 18 136 10 S162 2 178 10"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="4"
+      />
+    </svg>
   );
 }
