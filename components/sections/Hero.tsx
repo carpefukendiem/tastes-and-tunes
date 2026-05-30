@@ -26,9 +26,9 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center lg:object-[58%_center]"
+          className="object-cover object-center lg:object-[62%_center]"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-navy/10 via-transparent to-[#b83a24]/25 lg:bg-linear-to-r lg:from-navy/55 lg:via-navy/15 lg:to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-navy/5 via-transparent to-[#b83a24]/15 lg:bg-linear-to-r lg:from-navy/30 lg:via-transparent lg:to-transparent" />
       </div>
 
       <Container className="relative z-10 flex min-h-[58svh] items-center pb-28 pt-8 lg:min-h-[100svh] lg:pb-36 lg:pt-28">
@@ -58,7 +58,7 @@ export function Hero() {
           >
             <span className="block">TASTES</span>
             <span className="block">
-              <span className="align-middle font-script text-[0.66em] normal-case tracking-normal text-gold">
+              <span className="align-middle font-script text-[0.66em] normal-case tracking-normal text-teal-light">
                 &
               </span>{" "}
               TUNES
@@ -77,13 +77,17 @@ export function Hero() {
 
           <motion.p
             variants={fadeUp}
-            className="mt-6 max-w-2xl font-heading text-sm font-bold uppercase tracking-[0.16em] text-paper sm:text-base"
+            className="mt-6 max-w-2xl font-heading font-bold uppercase text-paper drop-shadow-[0_3px_10px_rgba(0,0,0,0.5)]"
           >
-            <span>• FALL 2026 •</span>
-            <span className="mx-3 text-gold">/</span>
-            <span>CHASE PALM PARK</span>
-            <span className="mx-3 text-gold">/</span>
-            <span>ON CABRILLO BLVD, SANTA BARBARA</span>
+            <span className="block text-sm tracking-[0.2em] text-gold sm:text-base">
+              — • FALL 2026 • —
+            </span>
+            <span className="mt-2 block text-2xl tracking-[0.14em]">
+              CHASE PALM PARK
+            </span>
+            <span className="mt-1 block text-xs tracking-[0.18em] sm:text-sm">
+              ON CABRILLO BLVD, SANTA BARBARA
+            </span>
           </motion.p>
 
           <motion.div
