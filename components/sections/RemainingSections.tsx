@@ -308,29 +308,40 @@ export function SponsorSection() {
               music experience:
             </p>
           </Reveal>
-          <div className="grid gap-5 md:grid-cols-3">
-            {sponsorCards.map((card) => (
-              <Reveal key={card.title}>
-                <article
-                  className={`h-full rounded-card p-6 text-paper shadow-card transition hover:-translate-y-1 ${card.gradient}`}
-                >
-                  <h3 className="font-heading text-2xl font-bold uppercase leading-tight">
-                    {card.title}
-                  </h3>
-                  <p className="mt-3 font-poster text-3xl">{card.price}</p>
-                  <p className="mt-5 text-sm leading-7 text-paper/90">
-                    {card.benefits}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
+          <div className="grid gap-7 xl:grid-cols-[1fr_auto] xl:items-center">
+            <div className="grid gap-5 md:grid-cols-3">
+              {sponsorCards.map((card) => (
+                <Reveal key={card.title}>
+                  <article
+                    className={`h-full rounded-card p-6 text-left text-paper shadow-card transition hover:-translate-y-1 ${card.gradient}`}
+                  >
+                    <h3 className="font-heading text-xl font-bold uppercase leading-tight tracking-[0.06em]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 font-poster text-4xl leading-none">
+                      {card.price}
+                    </p>
+                    <ul className="mt-6 space-y-3 text-sm leading-6 text-paper">
+                      {card.benefits.split(" · ").map((benefit) => (
+                        <li key={benefit} className="flex gap-2">
+                          <span className="mt-0.5 text-gold" aria-hidden="true">
+                            ✓
+                          </span>
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal className="flex justify-center">
+              <div className="grid h-36 w-36 rotate-[-8deg] place-items-center rounded-full border-4 border-dashed border-gold p-5 text-center font-heading text-sm font-bold uppercase leading-tight tracking-[0.08em] text-gold xl:h-40 xl:w-40">
+                Custom Packages Available
+              </div>
+            </Reveal>
           </div>
         </div>
-        <Reveal className="mt-10 flex justify-center lg:justify-end">
-          <div className="grid h-36 w-36 rotate-[-8deg] place-items-center rounded-full border-4 border-dashed border-gold p-5 text-center font-heading text-sm font-bold uppercase leading-tight tracking-[0.08em] text-gold">
-            Custom Packages Available
-          </div>
-        </Reveal>
       </Container>
     </Section>
   );
