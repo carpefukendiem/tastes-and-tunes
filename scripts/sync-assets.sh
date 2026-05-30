@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+SRC=images; DST=public/assets
+mkdir -p "$DST"/{hero,illustrations,icons,artists,headers,restaurants,partners}
+cp "$SRC/hero-bg.png"                            "$DST/hero/hero-bg.png"
+cp "$SRC/vw-van-graphic.png"                     "$DST/illustrations/vw-van.png"
+cp "$SRC/wave-graphic.png"                       "$DST/illustrations/wave.png"
+cp "$SRC/palm-trees-graphic.png"                 "$DST/illustrations/palm-trees.png"
+cp "$SRC/book-with-heart.png"                    "$DST/illustrations/book-with-heart.png"
+cp "$SRC/chefs-hat-icon-graphic.png"             "$DST/icons/dining.png"
+cp "$SRC/wine-icon-graphic.png"                  "$DST/icons/wineries.png"
+cp "$SRC/mixed-drinks.png"                        "$DST/icons/cocktails.png"
+cp "$SRC/guitar-on-the-beach.png"                "$DST/icons/music.png"
+cp "$SRC/bag-shopping.png"                        "$DST/icons/makers.png"
+cp "$SRC/book-with-sun-icon.png"                 "$DST/icons/philanthropy.png"
+cp "$SRC/billy-idol-guest.png"                   "$DST/artists/billy-idol.png"
+cp "$SRC/berlin-with-terri-nunn.png"             "$DST/artists/berlin.png"
+cp "$SRC/Sugar-Ray.png"                          "$DST/artists/sugar-ray.png"
+cp "$SRC/Artists-Under-Construction.png"         "$DST/headers/artists-header.png"
+cp "$SRC/savor-the-santa-barbara-food-scene.png" "$DST/headers/savor-block.png"
+cp "$SRC/and-many-more-local-favorites.png"      "$DST/headers/and-many-more.png"
+cp "$SRC/logobanner3.png"                        "$DST/restaurants/row-1.png"
+cp "$SRC/logobanner2.png"                        "$DST/restaurants/row-2.png"
+cp "$SRC/logobanner1.png"                        "$DST/restaurants/row-3.png"
+rm -f "$SRC/website homepage  image.png"
+echo "✓ Assets synced to public/assets"
