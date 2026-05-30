@@ -291,6 +291,13 @@ const sponsorCards = [
   },
 ];
 
+const socialLinks = [
+  { label: "Instagram", icon: InstagramIcon },
+  { label: "Facebook", icon: FacebookIcon },
+  { label: "X", icon: XIcon },
+  { label: "YouTube", icon: YouTubeIcon },
+];
+
 export function SponsorSection() {
   return (
     <Section id="sponsor" bg="navyDeep">
@@ -448,24 +455,27 @@ export function FooterSection() {
                 Follow the Vibes
               </h3>
               <div className="mt-4 flex gap-3" aria-label="Social links">
-                {["Instagram", "Facebook", "X", "YouTube"].map((social) => (
+                {socialLinks.map(({ label, icon: Icon }) => (
                   <a
-                    key={social}
+                    key={label}
                     href="#home"
-                    aria-label={social}
-                    className="grid h-10 w-10 place-items-center rounded-full border border-paper/40 font-heading text-xs font-bold uppercase text-paper transition hover:bg-paper hover:text-navy"
+                    aria-label={label}
+                    className="grid h-10 w-10 place-items-center rounded-full border border-paper/40 text-paper transition hover:bg-paper hover:text-navy"
                   >
-                    {social.slice(0, 2)}
+                    <Icon className="h-5 w-5" />
                   </a>
                 ))}
               </div>
             </div>
-            <address className="not-italic">
-              <p className="font-heading text-lg font-bold uppercase tracking-[0.12em]">
-                Chase Palm Park
-              </p>
-              <p className="mt-2 text-paper/80">ON CABRILLO BLVD</p>
-              <p className="text-paper/80">SANTA BARBARA, CA</p>
+            <address className="flex gap-3 not-italic">
+              <MapPinIcon className="mt-1 h-6 w-6 shrink-0 text-gold" />
+              <div>
+                <p className="font-heading text-lg font-bold uppercase tracking-[0.12em]">
+                  Chase Palm Park
+                </p>
+                <p className="mt-2 text-paper/80">ON CABRILLO BLVD</p>
+                <p className="text-paper/80">SANTA BARBARA, CA</p>
+              </div>
             </address>
           </div>
         </div>
@@ -475,5 +485,53 @@ export function FooterSection() {
         </div>
       </Container>
     </footer>
+  );
+}
+
+function InstagramIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="2" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+      <circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M14.2 8.1V6.8c0-.7.5-1.1 1.2-1.1h1.9V2.4c-.9-.1-1.8-.2-2.7-.2-2.8 0-4.7 1.7-4.7 4.8v1.1H6.8v3.7h3.1v9.9h4.3v-9.9h2.9l.6-3.7h-3.5Z" />
+    </svg>
+  );
+}
+
+function XIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M13.9 10.5 21.4 2h-2.1l-6.4 7.2L7.8 2H2l7.9 11.1L2 22h2.1l6.8-7.7 5.4 7.7H22l-8.1-11.5Zm-2.4 2.7-.8-1.1L4.5 3.6h2.3l5 7 .8 1.1 6.6 8.8h-2.3l-5.4-7.3Z" />
+    </svg>
+  );
+}
+
+function YouTubeIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5a3 3 0 0 0-2.1 2.1C2 9 2 12 2 12s0 3 .4 4.8a3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15 22 12 22 12s0-3-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" />
+    </svg>
+  );
+}
+
+function MapPinIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="2" />
+    </svg>
   );
 }
