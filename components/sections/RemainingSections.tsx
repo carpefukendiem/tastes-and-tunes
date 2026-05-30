@@ -175,33 +175,42 @@ export function ExperienceSection() {
 }
 
 export function ArtistsSection() {
+  const artistCards = [
+    { asset: assets.artists.billyIdol, tilt: "lg:rotate-[-2deg]" },
+    { asset: assets.artists.berlin, tilt: "lg:rotate-[1.5deg]" },
+    { asset: assets.artists.sugarRay, tilt: "lg:rotate-[-2deg]" },
+  ];
+
   return (
     <Section id="lineup" bg="navy">
       <Container>
         <h2 className="sr-only">
           Artists Under Consideration. Final lineup to be announced!
         </h2>
-        <Reveal className="mx-auto max-w-3xl overflow-hidden rounded-card">
-          <AssetImage
-            asset={assets.headers.artistsHeader}
-            sizes="(min-width: 1024px) 58vw, 100vw"
-            className="aspect-[3/1.15] w-full scale-[1.06] object-cover"
-          />
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {[
-            assets.artists.billyIdol,
-            assets.artists.berlin,
-            assets.artists.sugarRay,
-          ].map((artist) => (
-            <Reveal key={artist.src}>
-              <AssetImage
-                asset={artist}
-                sizes="(min-width: 768px) 32vw, 100vw"
-                className="w-full rounded-card shadow-card"
-              />
-            </Reveal>
-          ))}
+        <div className="grid gap-8 lg:grid-cols-[0.32fr_0.68fr] lg:items-center">
+          <Reveal className="mx-auto max-w-sm overflow-hidden rounded-card lg:max-w-none">
+            <AssetImage
+              asset={assets.headers.artistsHeader}
+              sizes="(min-width: 1024px) 30vw, 100vw"
+              className="aspect-[0.95/1] w-full scale-[1.06] object-cover"
+            />
+          </Reveal>
+          <div className="grid gap-6 md:grid-cols-3 lg:flex lg:items-center lg:gap-0">
+            {artistCards.map(({ asset, tilt }, index) => (
+              <Reveal
+                key={asset.src}
+                className={`relative ${index === 0 ? "" : "lg:-ml-8"} ${
+                  index === 1 ? "lg:z-10" : ""
+                }`}
+              >
+                <AssetImage
+                  asset={asset}
+                  sizes="(min-width: 1024px) 24vw, (min-width: 768px) 32vw, 100vw"
+                  className={`w-full rounded-card shadow-card transition duration-300 hover:relative hover:z-20 hover:rotate-0 hover:scale-[1.03] ${tilt}`}
+                />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Container>
     </Section>
